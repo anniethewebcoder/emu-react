@@ -12,6 +12,7 @@
 */
 
 body {
+    background-color: #EFEFEF;
     margin: 0;
     padding: 0;
 }
@@ -29,16 +30,43 @@ body {
     width: 100%;
 }
 
-#header #banner {
-    background-color: #FEDC3D;
-    height: 100px;
-    margin: 0;
+#banner {
     position: absolute;
-    top: 50%;
+    display: block;
+    margin: 50px 0px;
     width: 100%;
+    height: 60px;
+    border: 1px solid #fed934;
+    background: #FEDC3D;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.15) inset, 0 6px 10px rgba(0,0,0,0.15);
 }
 
-#header #logo {
+#banner::before, #banner::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: -70px;
+    top: 24px;
+    display: block;
+    width: 40px;
+    height: 0px;
+    border: 30px solid #FEDC3D;
+    border-right: 20px solid #fecf01;
+    border-bottom-color: #fed41b;
+    border-left-color: transparent;
+    transform: rotate(-5deg);
+}
+
+#banner::after {
+    left: auto;
+    right: -70px;
+    border-left: 20px solid #fecf01;
+    border-right: 30px solid transparent;
+    transform: rotate(5deg);
+}
+
+#logo {
     background-color: #FEDC3D;
     border: 10px double #000000;
     border-radius: 50%;
@@ -53,6 +81,7 @@ body {
     -ms-transform: translateX(10%) translateY(10%);
     transform: translateX(10%) translateY(10%);
     width: 140px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.15) inset, 0 6px 10px rgba(0,0,0,0.15);
 }
 
 #form {
