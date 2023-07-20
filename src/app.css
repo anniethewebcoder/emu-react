@@ -1,0 +1,60 @@
+/*
+    #FEDC3D - Butter
+    #000000 - Black
+    #01ABAA - Azure
+    #FEA680 - Peach
+
+    font-family: 'Bungee Shade', cursive;
+    font-family: 'Fascinate', cursive;
+    font-family: 'Fascinate Inline', cursive;
+    font-family: 'Monoton', cursive;
+
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin: 0 auto;
+    height: 100vh;
+    width: 80%;
+}
+
+#header {
+    height: 200px;
+    margin: 0;
+    position: relative;
+    width: 100%;
+}
+
+#header #banner {
+    background-color: #FEDC3D;
+    height: 100px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+#header #logo {
+    background-color: #FEDC3D;
+    border: 10px double #000000;
+    border-radius: 50%;
+    font-family: 'Bungee Shade', cursive;
+    height: 140px;
+    justify-content: center;
+    line-height: 1.0;
+    margin: 0;
+    position: absolute;
+    rotate: 330deg;
+    text-align: center;
+    -ms-transform: translateX(10%) translateY(10%);
+    transform: translateX(10%) translateY(10%);
+    width: 140px;
+}
+
+#form {
+    margin-top: 30px;
+}
