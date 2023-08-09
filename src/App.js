@@ -1,14 +1,14 @@
-import React from 'react';
-import "./app.css";
-import Header from './components/Header';
-import AddTodoForm from './components/AddTodoForm';
+import "./css/app.css";
+import TodoContainer from './components/TodoContainer';
+
+const table = `/${process.env.REACT_APP_TABLE_NAME}`
 
 const App = () => {
+
   return (
     <>
       <div id="container">
-        <Header />
-        <AddTodoForm />
+        <TodoContainer tableName={table}/>
       </div>
       
     </>

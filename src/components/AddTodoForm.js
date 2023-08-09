@@ -1,18 +1,48 @@
-import { useState } from "react";
+import { useState } from 'react'
+import InputWithLabel from "./InputWithLabel";
 
-const AddTodoForm = () => {
-    const [todoTitle, setTodoTitle] = useState("");
+const AddTodoForm = ({ onAddTodo }) => {
+    const [todoTask, setTodoTask] = useState("")
+    const [todoDate, setTodoDate] = useState("")
 
+    const taskChange = (event) => {
+        let newTodoTask = event.target.value
+        setTodoTask(newTodoTask)
+    }
+
+    const dateChange = (event) => {
+        let newTodoDate = event.target.value
+        setTodoDate(newTodoDate)
+    }
+
+    const addTodo = (event) => {
+        event.preventDefault();
+
+        onAddTodo({
+            task: todoTask,
+            date: todoDate
+        })
+
+        setTodoTask("")
+        setTodoDate("")
+    }
     return (
-        <div id="form">
-            <form>
-                <button>New Task?</button>
-                <label>Title</label>
-                <input type="text" name="title"></input>
-                <label>Task: </label>
-                <input type="text" name="task"></input>
+        <>
+            <form onSubmit={addTodo}>
+                <InputWithLabel 
+                    name="task"
+                    type="text" 
+                    isFocused
+                    onChange={taskChange}
+                >Task</InputWithLabel>
+                <InputWithLabel
+                    name="date"
+                    type="date"
+                    onChange={dateChange}
+                >Due By</InputWithLabel>
+                <button type="submit">Add</button>
             </form>
-        </div>
+        </>
     )
 }
 
