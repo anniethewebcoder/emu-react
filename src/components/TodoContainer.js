@@ -56,7 +56,6 @@ const postTodo = async (table, task, date) => {
       body: JSON.stringify(airtableData)
     })
 
-    console.log(JSON.stringify(airtableData))
     if(!res.ok) {
       const msg = `Error has occurred: ${res.status}`
       throw new Error(msg)
@@ -64,6 +63,28 @@ const postTodo = async (table, task, date) => {
 
     const dataResponse = await res.json()
     return dataResponse
+  } catch (err) {
+    console.log(err.message)
+  }
+}
+
+const deleteTodo = async (table, id) => {
+  try {
+    const res = await fetch(url+table+id, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${key}`
+      }
+    })
+
+    if(!res.ok) {
+      const msg = `Error has occurred: ${res.status}`
+      throw new Error(msg)
+    }
+
+    const dataResponse = await res.json()
+    return dataResponse
+
   } catch (err) {
     console.log(err.message)
   }
@@ -85,22 +106,31 @@ const TodoContainer = ({ tableName }) => {
     })
   }, [tableName]);
 
-  // const addExample =() => {
-  //   postTodo(tableName, "Post through app", "2023-08-10", "Todo")
-  // }
-
   const addTodo = (newTodo) => {
     postTodo(tableName, newTodo.task, newTodo.date)
   }
 
+  const deleteTask = (todo) => {
+    deleteTodo(tableName, todo.id)
+  }
     return (
       <>
-        <AddTodoForm onAddTodo={addTodo} />
-        { isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <TodoList todoList={todoList} />
-        )}
+        <div id="showform" className="folder">
+          <h1 className="folderhead">ADD TASK</h1>
+          <div className="folderbody">
+            <AddTodoForm onAddTodo={addTodo} />
+          </div>
+        </div>
+        <div id="showlist" className="folder">
+          <h1 className="folderhead">SHOW LIST</h1>
+          <div className="folderbody">
+            { isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <TodoList todoList={todoList} onDeleteTask={deleteTask} />
+            )}
+          </div>
+        </div>
       </>
     )
  

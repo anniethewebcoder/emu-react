@@ -1,4 +1,8 @@
-const TodoListItem = ({ todo }) => {
+const TodoListItem = ({ todo, onDeleteTask }) => {
+
+    const deleteTask = () => {
+        onDeleteTask(todo)
+    }
 
     return (
         <ul>
@@ -13,6 +17,9 @@ const TodoListItem = ({ todo }) => {
             </li>
             <li>
                 {todo.created}
+            </li>
+            <li>
+                <button type="button" onClick={deleteTask}>Delete</button>
             </li>
         </ul>
     )

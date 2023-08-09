@@ -1,6 +1,6 @@
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todoList }) => {
+const TodoList = ({ todoList, onDeleteTask }) => {
     
     return (
         <>
@@ -11,6 +11,7 @@ const TodoList = ({ todoList }) => {
                         <TodoListItem 
                             key={item.id}
                             todo={item}
+                            onDeleteTask={onDeleteTask}
                         />
                     )
                 })
