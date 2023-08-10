@@ -62,6 +62,7 @@ const postTodo = async (table, task, date) => {
     }
 
     const dataResponse = await res.json()
+    //console.log(dataResponse)
     return dataResponse
   } catch (err) {
     console.log(err.message)
@@ -90,6 +91,10 @@ const deleteTodo = async (table, id) => {
   }
 }
 
+const searchTodo = () => {
+  
+}
+
 const TodoContainer = ({ tableName }) => {
 
   const [todoList, setTodoList] = useState([])
@@ -107,7 +112,19 @@ const TodoContainer = ({ tableName }) => {
   }, [tableName]);
 
   const addTodo = (newTodo) => {
-    postTodo(tableName, newTodo.task, newTodo.date)
+    postTodo(tableName, newTodo.task, newTodo.date).then((addingTodo) => {
+      const todo = {
+        id: addingTodo.id,
+        task: addingTodo.fields.Task,
+        date: addingTodo.fields.Date,
+        stat: addingTodo.fields.Status,
+        created: addingTodo.createdTime
+      }
+
+      setTodoList([...todoList, todo])
+    })
+
+    
   }
 
   const deleteTask = (todo) => {
