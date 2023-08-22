@@ -7,7 +7,7 @@ const key = `${process.env.REACT_APP_API_KEY}`
 
 const fetchAirtable = async (table) => {
   try {
-    const res = await fetch(url+table, {
+    const res = await fetch(url+table+'?sort%5B0%5D%5Bfield%5D=Date&sort%5B0%5D%5Bdirection%5D=asc', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${key}`
@@ -133,13 +133,13 @@ const TodoContainer = ({ tableName }) => {
     return (
       <>
         <div id="showform" className="folder">
-          <h1 className="folderhead">ADD TASK</h1>
+          <h1 className="folderhead">Add Task</h1>
           <div className="folderbody">
             <AddTodoForm onAddTodo={addTodo} />
           </div>
         </div>
         <div id="showlist" className="folder">
-          <h1 className="folderhead">SHOW LIST</h1>
+          <h1 className="folderhead">Show List</h1>
           <div className="folderbody">
             { isLoading ? (
               <p>Loading...</p>

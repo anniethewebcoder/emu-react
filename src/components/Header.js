@@ -1,14 +1,17 @@
-import './../css/header.css'
-
 const Header = () => {
     return (
     
-        <div id="header">
-            <div id="banner">
-                <p>SIGN UP / LOG IN</p>
+        <div className="header">
+            <div className="topper">
+                
             </div>
-            <div id="logo">
-                <h1>AK's Todo List</h1>
+            <div className="banner">
+
+            </div>
+            <div className="logo">
+                <h1>Annie's To-Do List</h1>
+                <h5>A Handy Dandy Tool</h5>
+                <h6>Est. 2023</h6>
             </div>
         </div>
         
