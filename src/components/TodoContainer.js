@@ -132,20 +132,41 @@ const TodoContainer = ({ tableName }) => {
   }
     return (
       <>
-        <div id="showform" className="folder">
-          <h1 className="folderhead">Add Task</h1>
-          <div className="folderbody">
-            <AddTodoForm onAddTodo={addTodo} />
+        <div className="content">
+          <div className="addform column">
+          <div className="folder">
+              <h1 className="folderhead">Welcome!</h1>
+              <div className="folderbody">
+                <h2>Your Simply Favorite To-Do List App</h2>
+                <p>You have come to the right place for a handy dandy productivity tool. This to-do list app will help keep you on track on a day-to-day basis.</p>
+              </div>
+            </div>
+            <div className="folder">
+              <h1 className="folderhead">Add a Task</h1>
+              <div className="folderbody">
+                <AddTodoForm onAddTodo={addTodo} />
+              </div>
+            </div>
+            <div className="folder">
+              <h1 className="folderhead">Sort Tasks</h1>
+              <div className="folderbody">
+                <p>Sort by Due Date</p>
+                <p>Sort by Status</p>
+                <p>Sort by Title</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div id="showlist" className="folder">
-          <h1 className="folderhead">Show List</h1>
-          <div className="folderbody">
-            { isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              <TodoList todoList={todoList} onDeleteTask={deleteTask} />
-            )}
+          <div className="showform column">
+            <div className="folder">
+            <h1 className="folderhead">Show List</h1>
+            <div className="folderbody">
+              { isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <TodoList todoList={todoList} onDeleteTask={deleteTask} />
+              )}
+            </div>
+            </div>
           </div>
         </div>
       </>

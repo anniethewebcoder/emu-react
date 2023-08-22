@@ -27,7 +27,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         setTodoDate("")
     }
     return (
-        <>
+        <div>
             <form onSubmit={addTodo}>
                 <InputWithLabel 
                     name="task"
@@ -40,9 +40,9 @@ const AddTodoForm = ({ onAddTodo }) => {
                     type="date"
                     onChange={dateChange}
                 >Due By</InputWithLabel>
-                <button type="submit">Add</button>
+                <button className="button" type="submit">Add</button>
             </form>
-        </>
+        </div>
     )
 }
 

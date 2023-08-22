@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+
 
 const TodoListItem = ({ todo, onDeleteTask }) => {
 
@@ -6,33 +6,25 @@ const TodoListItem = ({ todo, onDeleteTask }) => {
         onDeleteTask(todo)
     }
 
-    const [showBoxes, setShowBoxes] = useState([])
+    if(todo.stat === "Todo") {
 
-    useEffect(() => {
-        const boxes = Array.from(document.querySelectorAll('.box'))
-    })
-    
-    const ulShow = useRef()
+    } else if(todo.stat === "In progress") {
+
+    } else if(todo.stat === "Done") {
+
+    } else {
+
+    }
 
 
     return (
-        <ul ref={ulShow}>
-            <li>
-                {todo.task}
-            </li>
-            <li>
-                {todo.date}
-            </li>
-            <li>
-                {todo.stat}
-            </li>
-            <li>
-                {todo.created}
-            </li>
-            <li>
-                <button type="button" onClick={deleteTask}>Delete</button>
-            </li>
-        </ul>
+        <div className='todo-card'>
+            <h3>{todo.task}</h3>
+            <h4>Due By: {todo.date}</h4>
+            <p>Status: {todo.stat}</p>
+            <p>Created: {todo.created.substring(0,10)}</p>
+            <p><button className="button" type="button" onClick={deleteTask}>Delete</button></p>
+        </div>
     )
 }
 

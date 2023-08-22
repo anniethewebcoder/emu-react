@@ -18,6 +18,10 @@ body {
     padding: 0;
 }
 
+.container {
+    margin: 0 auto;
+    width: 80%;  
+}
 .logo {
     position: relative;
     color: var(--brownColor);
@@ -115,13 +119,34 @@ body {
     border-radius: 50%;
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    align-items: flex-start;
+}
+
+.column {
+    margin: 0;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: unset; 
+}
+
+.addform {
+    width: 33%;
+}
+
+.showform {
+    width: 67%;
+}
+
 .folder {
     background-color: var(--yellowColor);
     background-image: url(./img/vintage-speckles.png);
-    width: 80%;
     max-width: 960px;
     min-height: 3.750em; 
-    margin: 2em auto;
+    margin: 1.25em;
     padding: 1.25em;
     border-radius: 0.313em;
     box-shadow: 0 1em 2em 0 rgba(0,0,0,0.5);
@@ -160,7 +185,7 @@ body {
     border-radius: 0.313em 0 0 0.313em;
 }
 
-.folderhead::after{
+.folderhead::after {
     width: 0.313em;
     height: 0.313em;
     background: rgba(0,0,0,0.35);
@@ -168,6 +193,30 @@ body {
     left: -0.313em;
     border-radius: 0.313em 0 0 0.313em;
     box-shadow: inset -1px 2px 2px rgba(0,0,0,0.3);
+}
+
+.todo-card {
+    border: 4px solid var(--brownColor);
+    margin: 2em 1em 2em 0; 
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 15px 15px 0 -4px var(--grayColor), 15px 15px var(--brownColor)
+
+}
+
+.button {
+    background-color: var(--blueColor);
+    background-image: url('./img/vintage-speckles.png');
+    border: none;
+    border-radius: 0.313em;
+    color: var(--grayColor);
+    padding: 0.8em 1em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 @media (max-width: 600px) {
@@ -181,7 +230,7 @@ body {
       padding: 0.5em;
     }
     
-    .folderhead:before, .ribbon:after{
+    .folderhead:before, .folderhead:after{
       font-size: 0.714em;
     }
     
