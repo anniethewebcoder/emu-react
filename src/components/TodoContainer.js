@@ -7,7 +7,7 @@ const key = `${process.env.REACT_APP_API_KEY}`
 
 const fetchAirtable = async (table) => {
   try {
-    const res = await fetch(url+table+'?sort%5B0%5D%5Bfield%5D=Date&sort%5B0%5D%5Bdirection%5D=asc', {
+    const res = await fetch(url+table, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${key}`
