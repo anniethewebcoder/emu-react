@@ -93,9 +93,9 @@ const deleteTodo = async (table, id) => {
   }
 }
 
-const searchTodo = () => {
+// const searchTodo = () => {
   
-}
+// }
 
 const TodoContainer = ({ tableName }) => {
 
