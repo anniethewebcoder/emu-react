@@ -1,7 +1,9 @@
+import style from './../app.module.css'
+
 const Header = () => {
     return (
     
-        <div className="header">
+        <div className={style.logo}>
             <div className="topper">
                 
             </div>

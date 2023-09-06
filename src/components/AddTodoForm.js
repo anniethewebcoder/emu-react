@@ -27,7 +27,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         setTodoDate("")
     }
     return (
-        <div>
+        <div className='addtask'>
             <form onSubmit={addTodo}>
                 <InputWithLabel 
                     name="task"
