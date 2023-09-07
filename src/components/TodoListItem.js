@@ -1,3 +1,5 @@
+import styles from './../app.module.css'
+
 const TodoListItem = ({ todo, onDeleteTask }) => {
 
     const deleteTask = () => {
@@ -5,9 +7,9 @@ const TodoListItem = ({ todo, onDeleteTask }) => {
     }
 
     const getStat = (todo) => {
-        if(todo.stat === "Todo") return "todo-card todo-stat"
-        if(todo.stat === "Done") return "todo-card done-stat"
-        if(todo.stat === "In progress") return "todo-card prog-stat"
+        if(todo.stat === "Todo") return `${styles.todoCard} ${styles.todoStat}`
+        if(todo.stat === "Done") return `${styles.todoCard} ${styles.doneStat}`
+        if(todo.stat === "In progress") return `${styles.todoCard} ${styles.progStat}`
     }
 
     const getDate = (todo) => {
@@ -28,8 +30,8 @@ const TodoListItem = ({ todo, onDeleteTask }) => {
             <p>Status: {todo.stat}</p>
             <p>Created: {todo.created.substring(0,10)}</p>
             <p>
-                <button className="button" type="button">Update</button>
-                <button className="button" type="button" onClick={deleteTask}>Delete</button>
+                <button className={styles.button} type="button">Update</button>
+                <button className={styles.button} type="button" onClick={deleteTask}>Delete</button>
                 
             </p>
         </div>

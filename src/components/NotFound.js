@@ -1,13 +1,14 @@
 import notfoundimg from './../img/NotFound.jpg'
+import styles from './../app.module.css'
 
 const NotFound = () => {
 
     return (
-        <div className="folder">
-            <div className="folderhead">
+        <div className={styles.folder}>
+            <div className={styles.folderhead}>
                 404 - Page Not Found
             </div>
-            <div className="folderbody">
+            <div className={styles.folderbody}>
                 But please enjoy this cute happy dog.
                 <img className="notfound" alt="notfound" src={notfoundimg} />
             </div>

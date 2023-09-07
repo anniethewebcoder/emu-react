@@ -1,16 +1,16 @@
-import style from './../app.module.css'
+import styles from './../app.module.css'
 
 const Header = () => {
     return (
     
-        <div className={style.logo}>
-            <div className="topper">
+        <div className={styles.logo}>
+            <div className={styles.topper}>
                 
             </div>
-            <div className="banner">
+            <div className={styles.banner}>
 
             </div>
-            <div className="logo">
+            <div className={styles.logo}>
                 <h1>Annie's To-Do List</h1>
                 <h5>A Handy Dandy Tool</h5>
                 <h6>Est. 2023</h6>

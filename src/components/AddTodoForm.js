@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import InputWithLabel from "./InputWithLabel";
+import styles from "./../app.module.css";
 
 const AddTodoForm = ({ onAddTodo }) => {
     const [todoTask, setTodoTask] = useState("")
@@ -27,7 +28,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         setTodoDate("")
     }
     return (
-        <div className='addtask'>
+        <div className={styles.addtask}>
             <form onSubmit={addTodo}>
                 <InputWithLabel 
                     name="task"
@@ -40,7 +41,7 @@ const AddTodoForm = ({ onAddTodo }) => {
                     type="date"
                     onChange={dateChange}
                 >Due By</InputWithLabel>
-                <button className="button" type="submit">Add</button>
+                <button className={styles.button} type="submit">Add</button>
             </form>
         </div>
     )

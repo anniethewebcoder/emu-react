@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import styles from './../app.module.css'
 
 const InputWithLabel = ({ type, value, isFocused, onChange, children }) => {
 
@@ -12,7 +13,7 @@ const InputWithLabel = ({ type, value, isFocused, onChange, children }) => {
 
     return (
         <>
-            <div className="inputfield">
+            <div className={styles.inputfield}>
                 <label htmlFor="todoTask">{children}</label>
                 <input
                     type={type}

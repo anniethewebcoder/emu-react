@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import TodoList from "./TodoList"
 import AddTodoForm from "./AddTodoForm"
+import styles from './../app.module.css'
 
 const url = `https://api.airtable.com/v0/${process.env.REACT_APP_BASE_KEY}`
 const key = `${process.env.REACT_APP_API_KEY}`
@@ -134,34 +135,34 @@ const TodoContainer = ({ tableName }) => {
   }
     return (
       <>
-        <div className="content">
-          <div className="addform column">
-          <div className="folder">
-              <h1 className="folderhead">Welcome!</h1>
-              <div className="folderbody">
+        <div className={styles.content}>
+          <div className={`${styles.addform} ${styles.column}`}>
+          <div className={styles.folder}>
+              <h1 className={styles.folderhead}>Welcome!</h1>
+              <div className={styles.folderbody}>
                 <h2>Your Simply Favorite To-Do List App</h2>
                 <p>You have come to the right place for a handy dandy productivity tool. This to-do list app will help keep you on track on a day-to-day basis.</p>
               </div>
             </div>
-            <div className="folder">
-              <h1 className="folderhead">Add a Task</h1>
-              <div className="folderbody">
+            <div className={styles.folder}>
+              <h1 className={styles.folderhead}>Add a Task</h1>
+              <div className={styles.folderbody}>
                 <AddTodoForm onAddTodo={addTodo} />
               </div>
             </div>
-            <div className="folder">
-              <h1 className="folderhead">Sort Tasks</h1>
-              <div className="folderbody">
+            <div className={styles.folder}>
+              <h1 className={styles.folderhead}>Sort Tasks</h1>
+              <div className={styles.folderbody}>
                 <p>Sort by Due Date</p>
                 <p>Sort by Status</p>
                 <p>Sort by Title</p>
               </div>
             </div>
           </div>
-          <div className="showform column">
-            <div className="folder">
-            <h1 className="folderhead">Show List</h1>
-            <div className="folderbody">
+          <div className={`${styles.addform} ${styles.column}`}>
+            <div className={styles.folder}>
+            <h1 className={styles.folderhead}>Show List</h1>
+            <div className={styles.folderbody}>
               { isLoading ? (
                 <p>Loading...</p>
               ) : (
