@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import styles from './../app.module.css'
+import styles from './../css/app.module.css'
 
 const InputWithLabel = ({ type, value, isFocused, onChange, children }) => {
 

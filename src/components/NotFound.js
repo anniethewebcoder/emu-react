@@ -1,5 +1,5 @@
 import notfoundimg from './../img/NotFound.jpg'
-import styles from './../app.module.css'
+import styles from './../css/app.module.css'
 
 const NotFound = () => {
 
