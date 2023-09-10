@@ -28,6 +28,9 @@ const AddTodoForm = ({ onAddTodo }) => {
         setTodoDate("")
     }
     return (
+        <div className={styles.folder}>
+        <h1 className={styles.folderhead}>Add a Task</h1>
+        <div className={styles.folderbody}>
         <div className={styles.addtask}>
             <form onSubmit={addTodo}>
                 <InputWithLabel 
@@ -43,6 +46,8 @@ const AddTodoForm = ({ onAddTodo }) => {
                 >Due By</InputWithLabel>
                 <button className={styles.button} type="submit">Add</button>
             </form>
+        </div>
+        </div>
         </div>
     )
 }

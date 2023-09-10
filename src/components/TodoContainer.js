@@ -5,11 +5,16 @@ import styles from './../css/app.module.css'
 import getList from "../fetch/getList"
 import postTask from "../fetch/postTask"
 import deleteTask from "../fetch/deleteTask"
+import updateTask from "../fetch/updateTask"
+import EditTodoForm from "./EditTodoForm"
+import Introduction from "./Introduction"
 
 const TodoContainer = ({ tableName }) => {
 
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isEditing, setIsEditing] = useState(false)
+  const [todoTask, setTodoTask] = useState([])
 
   useEffect(() => {
     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
@@ -40,47 +45,57 @@ const TodoContainer = ({ tableName }) => {
 
   const deleteTodo = (todo) => {
     deleteTask(tableName, todo.id)
+
+    const newList = todoList.filter(
+      (item) => item.id !== todo.id
+    )
+
+    setTodoList(newList)
+  }
+
+  const updateTodo = (todo) => {
+   
+    setIsEditing(true)
+    setTodoTask(todo)
+
+    //const data = updateTask(tableName, todo.id, todo.stat, todo.task, todo.date)
+
+    // const updateList = todoList.map(
+    //   (item) => item.id === todo.id ? {...item, ...data} : item 
+    // )
+
+    //setIsEditing(false)
+
   }
     return (
-      <>
+<div className={styles.container}>
         <div className={styles.content}>
-          <div className={`${styles.addform} ${styles.column}`}>
-          <div className={styles.folder}>
-              <h1 className={styles.folderhead}>Welcome!</h1>
-              <div className={styles.folderbody}>
-                <h2>Your Simply Favorite To-Do List App</h2>
-                <p>You have come to the right place for a handy dandy productivity tool. This to-do list app will help keep you on track on a day-to-day basis.</p>
-              </div>
-            </div>
-            <div className={styles.folder}>
-              <h1 className={styles.folderhead}>Add a Task</h1>
-              <div className={styles.folderbody}>
-                <AddTodoForm onAddTodo={addTodo} />
-              </div>
-            </div>
-            <div className={styles.folder}>
-              <h1 className={styles.folderhead}>Sort Tasks</h1>
-              <div className={styles.folderbody}>
-                <p>Sort by Due Date</p>
-                <p>Sort by Status</p>
-                <p>Sort by Title</p>
-              </div>
-            </div>
-          </div>
-          <div className={`${styles.addform} ${styles.column}`}>
+          <Introduction />
+
+          <AddTodoForm onAddTodo={addTodo} />
+
+            
+          
+
             <div className={styles.folder}>
             <h1 className={styles.folderhead}>Show List</h1>
             <div className={styles.folderbody}>
+            {  isEditing ? (
+                <EditTodoForm task={todoTask}/>
+              ):(
+                <p>Something</p>
+              )}
               { isLoading ? (
                 <p>Loading...</p>
               ) : (
-                <TodoList todoList={todoList} onDeleteTask={deleteTodo} />
+                <TodoList todoList={todoList} onDeleteTask={deleteTodo} onUpdateTask={updateTodo}/>
               )}
             </div>
-            </div>
           </div>
-        </div>
-      </>
+          </div>
+          </div>
+
+
     )
  
 }

@@ -13,7 +13,6 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className={styles.container}>
       <Routes>
         <Route path="/" element={
           <>
@@ -24,7 +23,6 @@ const App = () => {
         } />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      </div>
       
     </BrowserRouter>
   )

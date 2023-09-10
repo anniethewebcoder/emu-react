@@ -1,9 +1,13 @@
 import styles from './../css/app.module.css'
 
-const TodoListItem = ({ todo, onDeleteTask }) => {
+const TodoListItem = ({ todo, onDeleteTask, onUpdateTask }) => {
 
     const deleteTask = () => {
         onDeleteTask(todo)
+    }
+
+    const updateTask = () => {
+        onUpdateTask(todo)
     }
 
     const getStat = (todo) => {
@@ -12,17 +16,6 @@ const TodoListItem = ({ todo, onDeleteTask }) => {
         if(todo.stat === "In progress") return `${styles.todoCard} ${styles.progStat}`
     }
 
-    const getDate = (todo) => {
-        let y = parseInt(todo.date.substring(0,4))
-        let m = parseInt(todo.date.substring(5,7))
-        let d = parseInt(todo.date.substring(8,10))
-        // const d = new Date()
-        console.log(y, m, d)
-        // console.log(d.toISOString().substring(0,10))
-    }
-
-    getDate(todo)
-
     return (
         <div className={getStat(todo)}>
             <h3>{todo.task}</h3>
@@ -30,7 +23,7 @@ const TodoListItem = ({ todo, onDeleteTask }) => {
             <p>Status: {todo.stat}</p>
             <p>Created: {todo.created.substring(0,10)}</p>
             <p>
-                <button className={styles.button} type="button">Update</button>
+                <button className={styles.button} type="button" onClick={updateTask}>Update</button>
                 <button className={styles.button} type="button" onClick={deleteTask}>Delete</button>
                 
             </p>
@@ -39,3 +32,12 @@ const TodoListItem = ({ todo, onDeleteTask }) => {
 }
 
 export default TodoListItem;
+
+    // const getDate = (todo) => {
+    //     let y = parseInt(todo.date.substring(0,4))
+    //     let m = parseInt(todo.date.substring(5,7))
+    //     let d = parseInt(todo.date.substring(8,10))
+    //     // const d = new Date()
+    //     console.log(y, m, d)
+    //     // console.log(d.toISOString().substring(0,10))
+    // }

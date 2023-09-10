@@ -1,34 +1,16 @@
-import axios from "axios"
-import styles from './../app.module.css'
+import styles from './../css/app.module.css'
 
 const SortList = () => {
-
-    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_BASE_KEY}`
-    const key = `${process.env.REACT_APP_API_KEY}`
-    
-    const fetchDueDate = async () => {
-        try {
-
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
-
-    const fetchStatus = async () => {
-        try {
-
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
-
-    const fetchTask = async () => {
-        try {
-
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
+    return (
+        <div className={styles.folder}>
+              <h1 className={styles.folderhead}>Sort Tasks</h1>
+              <div className={styles.folderbody}>
+                <p>Sort by Due Date</p>
+                <p>Sort by Status</p>
+                <p>Sort by Title</p>
+              </div>
+            </div>
+    )
 }
 
-export default SortList;
+export default SortList

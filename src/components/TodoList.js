@@ -1,10 +1,9 @@
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todoList, onDeleteTask }) => {
+const TodoList = ({ todoList, onDeleteTask, onUpdateTask }) => {
     
     return (
         <>
-            
             {
                 todoList.map((item) => {
                     return(
@@ -12,6 +11,7 @@ const TodoList = ({ todoList, onDeleteTask }) => {
                             key={item.id}
                             todo={item}
                             onDeleteTask={onDeleteTask}
+                            onUpdateTask={onUpdateTask}
                         />
                     )
                 })
