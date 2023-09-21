@@ -1,0 +1,36 @@
+.card {
+    background-image: url('./../img/vintage-speckles.png');
+    background-color: var(--grayColor);
+    margin: 2em 1em 2em 0; 
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card__task {
+
+}
+
+.card__date {
+
+}
+
+.card__stat {
+    box-shadow: 10px 10px var(--brownColor)
+}
+
+.card__stat_todo {
+    box-shadow: -15px -15px 0 -4px var(--blueColor);
+}
+
+.card__stat_prog {
+    box-shadow: -15px -15px 0 -4px var(--grayColor);
+}
+
+.card__stat_done {
+    box-shadow: -15px -15px 0 -4px var(--orangeColor);
+}
+
+.card__button {
+
+}

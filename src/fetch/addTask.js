@@ -1,4 +1,4 @@
-const  postTask = async (table, task, date) => {
+const  addTask = async (table, task, date) => {
 
     const url = `https://api.airtable.com/v0/${process.env.REACT_APP_BASE_KEY}`
     const key = `${process.env.REACT_APP_API_KEY}`
@@ -35,4 +35,4 @@ const  postTask = async (table, task, date) => {
 }
 
 
-export default postTask;
+export default addTask;

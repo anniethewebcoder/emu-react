@@ -1,30 +1,37 @@
-import styles from './../css/app.module.css'
+import styles from './../css/card.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrashCan, faSpinner,  } from '@fortawesome/free-solid-svg-icons'
+import { faCircle, faCircleCheck } from '@fortawesome/free-regular-svg-icons' 
 
-const TodoListItem = ({ todo, onDeleteTask, onUpdateTask }) => {
+const TodoListItem = ({ todo, onDeleteTask, onEditTask }) => {
 
     const deleteTask = () => {
         onDeleteTask(todo)
     }
 
-    const updateTask = () => {
-        onUpdateTask(todo)
+    const editTask = () => {
+        onEditTask(todo)
     }
 
     const getStat = (todo) => {
-        if(todo.stat === "Todo") return `${styles.todoCard} ${styles.todoStat}`
-        if(todo.stat === "Done") return `${styles.todoCard} ${styles.doneStat}`
-        if(todo.stat === "In progress") return `${styles.todoCard} ${styles.progStat}`
+        if(todo.stat === "Todo") return `${styles.card} ${styles.card__stat_todo}`
+        if(todo.stat === "Done") return `${styles.card} ${styles.card__stat_done}`
+        if(todo.stat === "In progress") return `${styles.card} ${styles.card__stat_prog}`
     }
 
     return (
-        <div className={getStat(todo)}>
-            <h3>{todo.task}</h3>
+        <div className={styles.card}>
+            <h3 className={getStat(todo)}>{todo.task}</h3>
             <h4>Due By: {todo.date}</h4>
-            <p>Status: {todo.stat}</p>
-            <p>Created: {todo.created.substring(0,10)}</p>
+            <h4>Status: {todo.stat}</h4>
+            <h4>Created: {todo.created.substring(0,10)}</h4>
             <p>
-                <button className={styles.button} type="button" onClick={updateTask}>Update</button>
-                <button className={styles.button} type="button" onClick={deleteTask}>Delete</button>
+            <FontAwesomeIcon icon={faCircleCheck} size="2xl" />
+            <FontAwesomeIcon icon={faSpinner} size="2xl" />
+            <FontAwesomeIcon icon={faCircle} size="2xl" />
+
+                <button className={styles.card__button} type="button" onClick={editTask}><FontAwesomeIcon icon={faPenToSquare} size="2xl" /></button>
+                <button className={styles.card__button} type="button" onClick={deleteTask}><FontAwesomeIcon icon={faTrashCan} size="2xl" /></button>
                 
             </p>
         </div>

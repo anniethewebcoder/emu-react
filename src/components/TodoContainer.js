@@ -3,11 +3,11 @@ import TodoList from "./TodoList"
 import AddTodoForm from "./AddTodoForm"
 import styles from './../css/app.module.css'
 import getList from "../fetch/getList"
-import postTask from "../fetch/postTask"
+import addTask from "../fetch/addTask"
 import deleteTask from "../fetch/deleteTask"
-import updateTask from "../fetch/updateTask"
-import EditTodoForm from "./EditTodoForm"
+import editTask from "../fetch/editTask"
 import Introduction from "./Introduction"
+
 
 const TodoContainer = ({ tableName }) => {
 
@@ -28,7 +28,7 @@ const TodoContainer = ({ tableName }) => {
   }, [tableName]);
 
   const addTodo = (newTodo) => {
-    postTask(tableName, newTodo.task, newTodo.date).then((addingTodo) => {
+    addTask(tableName, newTodo.task, newTodo.date).then((addingTodo) => {
       const todo = {
         id: addingTodo.id,
         task: addingTodo.fields.Task,
@@ -53,7 +53,7 @@ const TodoContainer = ({ tableName }) => {
     setTodoList(newList)
   }
 
-  const updateTodo = (todo) => {
+  const editTodo = (todo) => {
    
     setIsEditing(true)
     setTodoTask(todo)
@@ -67,37 +67,27 @@ const TodoContainer = ({ tableName }) => {
     //setIsEditing(false)
 
   }
-    return (
-<div className={styles.container}>
-        <div className={styles.content}>
-          <Introduction />
-
-          <AddTodoForm onAddTodo={addTodo} />
-
-            
-          
-
-            <div className={styles.folder}>
-            <h1 className={styles.folderhead}>Show List</h1>
-            <div className={styles.folderbody}>
-            {  isEditing ? (
-                <EditTodoForm task={todoTask}/>
-              ):(
-                <p>Something</p>
-              )}
-              { isLoading ? (
-                <p>Loading...</p>
-              ) : (
-                <TodoList todoList={todoList} onDeleteTask={deleteTodo} onUpdateTask={updateTodo}/>
-              )}
-            </div>
-          </div>
-          </div>
-          </div>
-
-
-    )
- 
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <Introduction />
+        <AddTodoForm onAddTodo={addTodo} />
+      </div>
+      <div className={`${styles.section}`}>
+        <h1 className={styles.section__title}>Show List</h1>
+          <div className={`${styles.section__body} ${styles.section__list}`}>
+        
+          { 
+            isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <TodoList todoList={todoList} onDeleteTask={deleteTodo} onEditTask={editTodo}/>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default TodoContainer;
