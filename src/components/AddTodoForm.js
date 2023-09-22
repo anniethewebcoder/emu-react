@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 const AddTodoForm = ({ onAddTodo }) => {
+
     const [todoTask, setTodoTask] = useState("")
     const [todoDate, setTodoDate] = useState("")
 

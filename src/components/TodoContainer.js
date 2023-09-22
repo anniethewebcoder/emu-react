@@ -7,14 +7,14 @@ import addTask from "../fetch/addTask"
 import deleteTask from "../fetch/deleteTask"
 import editTask from "../fetch/editTask"
 import Introduction from "./Introduction"
-
+import EditTodoForm from "./EditTodoForm"
 
 const TodoContainer = ({ tableName }) => {
 
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
-  const [todoTask, setTodoTask] = useState([])
+  const [currentTask, setCurrentTask] = useState([])
 
   useEffect(() => {
     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
@@ -39,8 +39,6 @@ const TodoContainer = ({ tableName }) => {
 
       setTodoList([todo, ...todoList])
     })
-
-    
   }
 
   const deleteTodo = (todo) => {
@@ -54,27 +52,31 @@ const TodoContainer = ({ tableName }) => {
   }
 
   const editTodo = (todo) => {
-   
+
     setIsEditing(true)
-    setTodoTask(todo)
+    setCurrentTask(todo)
+    window.scrollTo(0, 0)
 
-    //const data = updateTask(tableName, todo.id, todo.stat, todo.task, todo.date)
-
-    // const updateList = todoList.map(
-    //   (item) => item.id === todo.id ? {...item, ...data} : item 
-    // )
-
-    //setIsEditing(false)
-
+    // editTask(tableName, todo.id, todo.stat, todo.task, todo.date).then((editingTodo) => {
+    //   setIsEditing(false)
+    // })
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <Introduction />
-        <AddTodoForm onAddTodo={addTodo} />
+        {
+          isEditing ? (      
+            <EditTodoForm onCurrentTask={currentTask} />
+          ) : (
+            <AddTodoForm onAddTodo={addTodo} />
+          )
+        }
+        
       </div>
       <div className={`${styles.section}`}>
-        <h1 className={styles.section__title}>Show List</h1>
+        <h1 className={styles.section__title}>Your To-Do List</h1>
           <div className={`${styles.section__body} ${styles.section__list}`}>
         
           { 

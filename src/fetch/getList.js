@@ -18,8 +18,6 @@ const getList = async (table) => {
 
     const airtable = await res.json()
 
-    console.log(airtable)
-
     const list = airtable.records.map((item) => {
       const todo = {
         id: item.id,

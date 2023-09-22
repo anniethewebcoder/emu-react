@@ -19,32 +19,24 @@ const TodoListItem = ({ todo, onDeleteTask, onEditTask }) => {
         if(todo.stat === "In progress") return `${styles.card} ${styles.card__stat_prog}`
     }
 
+    const statIcon = (todo) => {
+        if(todo.stat === "Todo") return <FontAwesomeIcon icon={faCircle} size="2xl" />
+        if(todo.stat === "Done") return <FontAwesomeIcon icon={faCircleCheck} size="2xl" />
+        if(todo.stat === "In progress") return <FontAwesomeIcon icon={faSpinner} size="2xl" />
+    }
+
     return (
         <div className={styles.card}>
-            <h3 className={getStat(todo)}>{todo.task}</h3>
+            <h3 className={getStat(todo)}>{statIcon(todo)}&nbsp;{todo.task}</h3>
             <h4>Due By: {todo.date}</h4>
             <h4>Status: {todo.stat}</h4>
             <h4>Created: {todo.created.substring(0,10)}</h4>
             <p>
-            <FontAwesomeIcon icon={faCircleCheck} size="2xl" />
-            <FontAwesomeIcon icon={faSpinner} size="2xl" />
-            <FontAwesomeIcon icon={faCircle} size="2xl" />
-
                 <button className={styles.card__button} type="button" onClick={editTask}><FontAwesomeIcon icon={faPenToSquare} size="2xl" /></button>
                 <button className={styles.card__button} type="button" onClick={deleteTask}><FontAwesomeIcon icon={faTrashCan} size="2xl" /></button>
-                
             </p>
         </div>
     )
 }
 
 export default TodoListItem;
-
-    // const getDate = (todo) => {
-    //     let y = parseInt(todo.date.substring(0,4))
-    //     let m = parseInt(todo.date.substring(5,7))
-    //     let d = parseInt(todo.date.substring(8,10))
-    //     // const d = new Date()
-    //     console.log(y, m, d)
-    //     // console.log(d.toISOString().substring(0,10))
-    // }
