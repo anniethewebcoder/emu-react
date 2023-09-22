@@ -57,9 +57,14 @@ const TodoContainer = ({ tableName }) => {
     setCurrentTask(todo)
     window.scrollTo(0, 0)
 
+    
     // editTask(tableName, todo.id, todo.stat, todo.task, todo.date).then((editingTodo) => {
     //   setIsEditing(false)
     // })
+  }
+
+  const updateEditing = (state) => {
+    setIsEditing(state)
   }
 
   return (
@@ -68,7 +73,9 @@ const TodoContainer = ({ tableName }) => {
         <Introduction />
         {
           isEditing ? (      
-            <EditTodoForm onCurrentTask={currentTask} />
+            <>
+            <EditTodoForm onCurrentTask={currentTask} onCancel={updateEditing}/>
+            </>
           ) : (
             <AddTodoForm onAddTodo={addTodo} />
           )

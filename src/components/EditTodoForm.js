@@ -5,9 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRectangleXmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 
 
-const EditTodoForm = ({ onCurrentTask }) => {
-    
-    console.log( onCurrentTask )
+const EditTodoForm = ({ onCurrentTask, onCancel }) => {
     
     const [editedTask, setEditedTask] = useState("")
     const [editedDate, setEditedDate] = useState("")
@@ -17,7 +15,7 @@ const EditTodoForm = ({ onCurrentTask }) => {
     }
 
     const cancelEditTask = () => {
-        window.location.reload()
+        onCancel(false)
     }
 
     const editingTask = (event) => {
@@ -30,6 +28,8 @@ const EditTodoForm = ({ onCurrentTask }) => {
         event.preventDefault();
         setEditedDate(event.target.value)
     }
+
+    
     
     return (
         <div className={`${styles.section} ${styles.section__right}`}>
