@@ -58,10 +58,24 @@ const TodoContainer = ({ tableName }) => {
     setCurrentTask(todo)
     window.scrollTo(0, 0)
 
-    
-    // editTask(tableName, todo.id, todo.stat, todo.task, todo.date).then((editingTodo) => {
-    //   setIsEditing(false)
-    // })
+  }
+
+  const saveEditTask = (todo) => {
+    editTask(tableName, todo.id, todo.stat, todo.task, todo.date)
+
+    const updatedItems = [...todoList]
+
+    const index = updatedItems.findIndex(item => item.id === todo.id)
+
+    if(index !== -1){
+      updatedItems[index].task = todo.task
+      updatedItems[index].date = todo.date
+      updatedItems[index].stat = todo.stat
+
+      setTodoList(updatedItems)
+    }
+
+    setIsEditing(false)
   }
 
   const updateEditing = (state) => {
@@ -75,7 +89,7 @@ const TodoContainer = ({ tableName }) => {
         {
           isEditing ? (      
             <>
-            <EditTodoForm onCurrentTask={currentTask} onCancel={updateEditing}/>
+            <EditTodoForm onCurrentTask={currentTask} onCancel={updateEditing} onSave={saveEditTask} />
             </>
           ) : (
             <AddTodoForm onAddTodo={addTodo} />

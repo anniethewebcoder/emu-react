@@ -137,6 +137,10 @@ input[type=radio] {
     cursor: pointer;
 }
 
+input[type=radio]:checked {
+    background-color: var(--orangeColor);
+}
+
 @media screen and (min-width: 1008px) {
     .container {
         width: 85%;

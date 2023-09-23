@@ -6,17 +6,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRectangleXmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 
 
-const EditTodoForm = ({ onCurrentTask, onCancel }) => {
+const EditTodoForm = ({ onCurrentTask, onCancel, onSave }) => {
     
     const [editedTask, setEditedTask] = useState(onCurrentTask.task)
     const [editedDate, setEditedDate] = useState(onCurrentTask.date)
     const [editedStat, setEditedStat] = useState(onCurrentTask.stat) 
     
     const saveEditTask = (event) => {
-        event.preventDefault();
+        event.preventDefault()
+        const editedList = {
+            id: onCurrentTask.id,
+            task: editedTask,
+            date: editedDate,
+            stat: editedStat,
+            created: onCurrentTask.created
+        }
+
+        onSave(editedList)
     }
 
-    const cancelEditTask = () => {
+    const cancelEditTask = (event) => {
+        event.preventDefault()
         onCancel(false)
     }
 
@@ -32,8 +42,6 @@ const EditTodoForm = ({ onCurrentTask, onCancel }) => {
     }
 
     const editingStat = (event) => {
-        event.preventDefault()
-        console.log(event.target.value)
         setEditedStat(event.target.value)
     }
 
