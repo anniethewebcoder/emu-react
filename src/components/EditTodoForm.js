@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import InputWithLabel from './InputWithLabel'
 import styles from './../css/app.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +10,7 @@ const EditTodoForm = ({ onCurrentTask, onCancel }) => {
     
     const [editedTask, setEditedTask] = useState("")
     const [editedDate, setEditedDate] = useState("")
+    const [editedStat, setEditedStat] = useState("") 
     
     const saveEditTask = (event) => {
         event.preventDefault();
@@ -19,14 +21,20 @@ const EditTodoForm = ({ onCurrentTask, onCancel }) => {
     }
 
     const editingTask = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         setEditedTask(event.target.value)
         console.log(editedTask)
     }
 
     const editingDate = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         setEditedDate(event.target.value)
+    }
+
+    const editingStat = (event) => {
+        event.preventDefault()
+        console.log(event.target.value)
+        setEditedStat(event.target.value)
     }
 
     
@@ -50,6 +58,12 @@ const EditTodoForm = ({ onCurrentTask, onCancel }) => {
                     value={onCurrentTask.date}
                     onChange={editingDate}
                 >Due By</InputWithLabel>
+                <input type="radio" name="status" value="Todo" onChange={editingStat} checked={editedStat === "Todo"}/>
+                <label htmlFor="Todo">Todo</label>
+                <input type="radio" name="status" value="In progress" onChange={editingStat} checked={editedStat === "In progress"} />
+                <label htmlFor="In progress">In progress</label>
+                <input type="radio" name="status" value="Done" onChange={editingStat} checked={editedStat === "Done"}/>
+                <label htmlFor="Done">Done</label>
                 <button className={styles.button} type="submit"><FontAwesomeIcon icon={faFloppyDisk} size="2xl" /></button>
                 <button className={styles.button} onClick={cancelEditTask}><FontAwesomeIcon icon={faRectangleXmark} size="2xl" /></button>
             </form>
@@ -58,6 +72,11 @@ const EditTodoForm = ({ onCurrentTask, onCancel }) => {
         </div>
     )
     
+}
+
+EditTodoForm.propTypes = {
+    onCurrentTask: PropTypes.object,
+    onCancel: PropTypes.func
 }
 
 export default EditTodoForm

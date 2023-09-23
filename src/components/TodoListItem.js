@@ -1,4 +1,5 @@
 import styles from './../css/card.module.css'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrashCan, faSpinner,  } from '@fortawesome/free-solid-svg-icons'
 import { faCircle, faCircleCheck } from '@fortawesome/free-regular-svg-icons' 
@@ -39,4 +40,10 @@ const TodoListItem = ({ todo, onDeleteTask, onEditTask }) => {
     )
 }
 
+TodoListItem.propTypes = {
+    todo: PropTypes.object,
+    onDeleteTask: PropTypes.func,
+    onEditTask: PropTypes.func
+
+}
 export default TodoListItem;

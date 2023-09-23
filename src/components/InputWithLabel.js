@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import PropTypes from 'prop-types'
 import styles from './../css/app.module.css'
 
 const InputWithLabel = ({ type, value, isFocused, onChange, children }) => {
@@ -24,6 +25,14 @@ const InputWithLabel = ({ type, value, isFocused, onChange, children }) => {
             </div>
         </>
     )
+}
+
+InputWithLabel.propTypes = {
+    type: PropTypes.string,
+    value: PropTypes.string,
+    isFocused: PropTypes.bool,
+    onChange: PropTypes.func,
+    children: PropTypes.string
 }
 
 export default InputWithLabel;

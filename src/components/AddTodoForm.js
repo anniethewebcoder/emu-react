@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import InputWithLabel from "./InputWithLabel";
 import styles from "./../css/app.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -53,6 +54,10 @@ const AddTodoForm = ({ onAddTodo }) => {
         </div>
         </div>
     )
+}
+
+AddTodoForm.propTypes = {
+    onAddTodo: PropTypes.func
 }
 
 export default AddTodoForm;

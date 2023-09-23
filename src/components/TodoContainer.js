@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import PropTypes from 'prop-types'
 import TodoList from "./TodoList"
 import AddTodoForm from "./AddTodoForm"
 import styles from './../css/app.module.css'
@@ -97,6 +98,10 @@ const TodoContainer = ({ tableName }) => {
       </div>
     </div>
   )
+}
+
+TodoContainer.propTypes = {
+  tableName: PropTypes.string
 }
 
 export default TodoContainer;

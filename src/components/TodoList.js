@@ -1,4 +1,5 @@
 import TodoListItem from "./TodoListItem";
+import PropTypes from 'prop-types'
 
 const TodoList = ({ todoList, onDeleteTask, onEditTask }) => {
     
@@ -20,6 +21,12 @@ const TodoList = ({ todoList, onDeleteTask, onEditTask }) => {
         </>
     )
     
+}
+
+TodoList.propTypes = {
+    todoList: PropTypes.array,
+    onDeleteTask: PropTypes.func,
+    onEditTask: PropTypes.func
 }
 
 export default TodoList;
