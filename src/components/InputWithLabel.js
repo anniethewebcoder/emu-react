@@ -18,7 +18,7 @@ const InputWithLabel = ({ type, value, isFocused, onChange, children }) => {
                 <label htmlFor="todoTask">{children}</label>
                 <input
                     type={type}
-                    value={value}
+                    defaultValue={value}
                     autoFocus={isFocused}
                     onChange={onChange}
                 />

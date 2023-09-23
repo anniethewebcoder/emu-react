@@ -8,9 +8,9 @@ import { faRectangleXmark, faFloppyDisk } from "@fortawesome/free-solid-svg-icon
 
 const EditTodoForm = ({ onCurrentTask, onCancel }) => {
     
-    const [editedTask, setEditedTask] = useState("")
-    const [editedDate, setEditedDate] = useState("")
-    const [editedStat, setEditedStat] = useState("") 
+    const [editedTask, setEditedTask] = useState(onCurrentTask.task)
+    const [editedDate, setEditedDate] = useState(onCurrentTask.date)
+    const [editedStat, setEditedStat] = useState(onCurrentTask.stat) 
     
     const saveEditTask = (event) => {
         event.preventDefault();
