@@ -17,6 +17,7 @@ const TodoContainer = ({ tableName }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [currentTask, setCurrentTask] = useState([])
 
+
   useEffect(() => {
     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
   }, [todoList]);
@@ -53,7 +54,6 @@ const TodoContainer = ({ tableName }) => {
   }
 
   const editTodo = (todo) => {
-
     setIsEditing(true)
     setCurrentTask(todo)
     window.scrollTo(0, 0)
@@ -61,6 +61,7 @@ const TodoContainer = ({ tableName }) => {
   }
 
   const saveEditTask = (todo) => {
+
     editTask(tableName, todo.id, todo.stat, todo.task, todo.date)
 
     const updatedItems = [...todoList]

@@ -2,7 +2,7 @@ import TodoListItem from "./TodoListItem";
 import PropTypes from 'prop-types'
 
 const TodoList = ({ todoList, onDeleteTask, onEditTask }) => {
-    
+
     return (
         <>
             {

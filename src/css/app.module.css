@@ -74,6 +74,19 @@
 
 }
 
+.section__body_img {
+    background-image: url('./../img/NotFoundResized.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+    height: 80vh;
+}
+
+.notfound {
+    max-width: 100%;
+    height: auto;
+}
+
 .section__left {
     width: 33%;
 }
@@ -133,11 +146,11 @@ input[type=text]:focus, input[type=date]:focus {
     height: auto;
 }
 
-input[type=radio] {
+input[type=radio] + label{
     cursor: pointer;
 }
 
-input[type=radio]:checked {
+input[type=radio]:checked + label {
     background-color: var(--orangeColor);
 }
 

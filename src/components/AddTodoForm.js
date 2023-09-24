@@ -7,8 +7,14 @@ import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 const AddTodoForm = ({ onAddTodo }) => {
 
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = today.getMonth() + 1
+    const day = today.getDate();
+    const todayDate = `${year}-${month}-${day}`
+
     const [todoTask, setTodoTask] = useState("")
-    const [todoDate, setTodoDate] = useState("")
+    const [todoDate, setTodoDate] = useState(todayDate)
 
     const taskChange = (event) => {
         let newTodoTask = event.target.value
@@ -22,7 +28,6 @@ const AddTodoForm = ({ onAddTodo }) => {
 
     const addTodo = (event) => {
         event.preventDefault();
-
         onAddTodo({
             task: todoTask,
             date: todoDate
