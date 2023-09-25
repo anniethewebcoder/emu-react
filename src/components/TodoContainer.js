@@ -16,6 +16,8 @@ const TodoContainer = ({ tableName }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
   const [currentTask, setCurrentTask] = useState([])
+  const [isAscending, setIsAscending] = useState(true)
+  const [sortButton, setSortButton] = useState("Sort List A to Z")
 
 
   useEffect(() => {
@@ -83,6 +85,32 @@ const TodoContainer = ({ tableName }) => {
     setIsEditing(state)
   }
 
+  const toggleSort = () => {
+    setIsAscending(!isAscending)
+
+    let newList
+
+    if(isAscending === true) {
+      setSortButton("Sort List Z to A")
+
+      newList = todoList.sort((a,b) => {
+        if(a.task.toUpperCase() > b.task.toUpperCase()) return 1
+        if(a.task.toUpperCase() < b.task.toUpperCase()) return -1
+        return 0
+      })
+    } else {
+      setSortButton("Sort List A to Z")
+
+      newList = todoList.sort((a,b) => {
+        if(a.task.toUpperCase() > b.task.toUpperCase()) return -1
+        if(a.task.toUpperCase() < b.task.toUpperCase()) return 1
+        return 0
+      })
+    }
+
+    setTodoList([...newList])
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -106,7 +134,10 @@ const TodoContainer = ({ tableName }) => {
             isLoading ? (
               <p>Loading...</p>
             ) : (
+              <>
+              <button onClick={toggleSort}>{sortButton}</button>
               <TodoList todoList={todoList} onDeleteTask={deleteTodo} onEditTask={editTodo}/>
+              </>
             )
           }
         </div>
