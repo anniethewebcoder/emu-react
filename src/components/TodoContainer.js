@@ -50,6 +50,8 @@ const TodoContainer = ({ tableName }) => {
 
       setTodoList([todo, ...todoList])
     })
+
+    setIsFiltered(false)
   }
 
   const deleteTodo = (todo) => {
@@ -99,26 +101,29 @@ const TodoContainer = ({ tableName }) => {
     let newList
 
     isFiltered === false ? currentList = todoList : currentList = filteredList
-
+    
     if(isTaskAscending === true) {
       setSortTaskButton(<FontAwesomeIcon icon={faArrowDownZA} size="2xl" />)
+
 
       newList = currentList.sort((a,b) => {
         if(a.task.toUpperCase() > b.task.toUpperCase()) return 1
         if(a.task.toUpperCase() < b.task.toUpperCase()) return -1
         return 0
       })
+
     } else {
-      setSortTaskButton(<FontAwesomeIcon icon={faArrowDownAZ} size="2xl" />)
+       setSortTaskButton(<FontAwesomeIcon icon={faArrowDownAZ} size="2xl" />)
 
-      newList = currentList.sort((a,b) => {
-        if(a.task.toUpperCase() > b.task.toUpperCase()) return -1
-        if(a.task.toUpperCase() < b.task.toUpperCase()) return 1
-        return 0
-      })
+        newList = currentList.sort((a,b) => {
+          if(a.task.toUpperCase() > b.task.toUpperCase()) return -1
+          if(a.task.toUpperCase() < b.task.toUpperCase()) return 1
+          return 0
+        })
+
+
+      isFiltered === false ? setTodoList([...newList]) : setFilteredList([...newList])
     }
-
-    isFiltered === false ? setTodoList([...newList]) : setFilteredList([...newList])
   }
 
   const toggleDateSort = () => {

@@ -70,10 +70,6 @@
     box-shadow: inset -1px 2px 2px rgba(0,0,0,0.3);
 }
 
-.section__body {
-
-}
-
 .section__body_img {
     background-image: url('./../img/NotFoundResized.jpg');
     background-repeat: no-repeat;
@@ -180,6 +176,19 @@ input[type=radio]:checked + label {
     }
 
     .container {
+        width: 100%;
+    }
+
+    .content {
+        display: block;
+        width: 90%;
+    }
+
+    .section__left {
+        width: 100%;
+    }
+
+    .section__right {
         width: 100%;
     }
   }
