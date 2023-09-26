@@ -9,6 +9,9 @@ import deleteTask from "../fetch/deleteTask"
 import editTask from "../fetch/editTask"
 import Introduction from "./Introduction"
 import EditTodoForm from "./EditTodoForm"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowDownAZ, faArrowDownZA, faArrowDown19, faArrowDown91, faSpinner, faListUl } from "@fortawesome/free-solid-svg-icons"
+import { faCircle, faCircleCheck  } from "@fortawesome/free-regular-svg-icons"
 
 const TodoContainer = ({ tableName }) => {
 
@@ -16,8 +19,12 @@ const TodoContainer = ({ tableName }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
   const [currentTask, setCurrentTask] = useState([])
-  const [isAscending, setIsAscending] = useState(true)
-  const [sortButton, setSortButton] = useState("Sort List A to Z")
+  const [isTaskAscending, setIsTaskAscending] = useState(true)
+  const [sortTaskButton, setSortTaskButton] = useState(<FontAwesomeIcon icon={faArrowDownAZ} size="2xl" />)
+  const [isDateAscending, setIsDateAscending] = useState(true)
+  const [sortDateButton, setSortDateButton] = useState(<FontAwesomeIcon icon={faArrowDown91} size="2xl" />)
+  const [filteredList, setFilteredList] = useState([])
+  const [isFiltered, setIsFiltered] = useState(false)
 
 
   useEffect(() => {
@@ -85,30 +92,94 @@ const TodoContainer = ({ tableName }) => {
     setIsEditing(state)
   }
 
-  const toggleSort = () => {
-    setIsAscending(!isAscending)
+  const toggleTaskSort = () => {
+    setIsTaskAscending(!isTaskAscending)
 
+    let currentList
     let newList
 
-    if(isAscending === true) {
-      setSortButton("Sort List Z to A")
+    isFiltered === false ? currentList = todoList : currentList = filteredList
 
-      newList = todoList.sort((a,b) => {
+    if(isTaskAscending === true) {
+      setSortTaskButton(<FontAwesomeIcon icon={faArrowDownZA} size="2xl" />)
+
+      newList = currentList.sort((a,b) => {
         if(a.task.toUpperCase() > b.task.toUpperCase()) return 1
         if(a.task.toUpperCase() < b.task.toUpperCase()) return -1
         return 0
       })
     } else {
-      setSortButton("Sort List A to Z")
+      setSortTaskButton(<FontAwesomeIcon icon={faArrowDownAZ} size="2xl" />)
 
-      newList = todoList.sort((a,b) => {
+      newList = currentList.sort((a,b) => {
         if(a.task.toUpperCase() > b.task.toUpperCase()) return -1
         if(a.task.toUpperCase() < b.task.toUpperCase()) return 1
         return 0
       })
     }
 
+    isFiltered === false ? setTodoList([...newList]) : setFilteredList([...newList])
+  }
+
+  const toggleDateSort = () => {
+    setIsDateAscending(!isDateAscending)
+
+    let newList
+
+    if(isDateAscending === true) {
+      setSortDateButton(<FontAwesomeIcon icon={faArrowDown19} size="2xl" />)
+
+      newList = todoList.sort((a,b) => {
+        if(a.date > b.date) return -1
+        if(a.date < b.date) return 1
+        return 0
+      })
+    } else {
+      setSortDateButton(<FontAwesomeIcon icon={faArrowDown91} size="2xl" />)
+
+      newList = todoList.sort((a,b) => {
+        if(a.date > b.date) return 1
+        if(a.date < b.date) return -1
+        return 0
+      })
+    }
+
     setTodoList([...newList])
+  }
+
+  const showAll = () => {
+    setFilteredList(todoList)
+    setIsFiltered(false)
+  }
+
+  const filterProgStat = () => {
+    setFilteredList(todoList)
+    setIsFiltered(true)
+    const newList = todoList.filter(
+      (item) => item.stat === "In progress"
+    )
+
+    setFilteredList(newList)
+  }
+
+  const filterDoneStat = () => {
+    setFilteredList(todoList)
+    setIsFiltered(true)
+    const newList = todoList.filter(
+      (item) => item.stat === "Done"
+    )
+
+    setFilteredList(newList)
+  }
+
+  const filterTodoStat = () => {
+    setFilteredList(todoList)
+    setIsFiltered(true)
+    const newList = todoList.filter(
+      (item) => item.stat === "Todo"
+    )
+
+    setFilteredList(newList)
   }
 
   return (
@@ -135,8 +206,19 @@ const TodoContainer = ({ tableName }) => {
               <p>Loading...</p>
             ) : (
               <>
-              <button onClick={toggleSort}>{sortButton}</button>
-              <TodoList todoList={todoList} onDeleteTask={deleteTodo} onEditTask={editTodo}/>
+              <button onClick={toggleTaskSort} className={styles.button}>{sortTaskButton}</button>
+              <button onClick={toggleDateSort} className={styles.button}>{sortDateButton}</button>
+              <button onClick={showAll} className={styles.button}>Show All <FontAwesomeIcon icon={faListUl} size="2xl" /></button>
+              <button onClick={filterTodoStat} className={styles.button}>Filter Todo <FontAwesomeIcon icon={faCircle} size="2xl" /></button>
+              <button onClick={filterProgStat} className={styles.button}>Filter In progress <FontAwesomeIcon icon={faSpinner} size="2xl" /></button>
+              <button onClick={filterDoneStat} className={styles.button}>Filter Done <FontAwesomeIcon icon={faCircleCheck} size="2xl" /></button>
+              
+              { isFiltered ? (
+                  <TodoList todoList={filteredList} onDeleteTask={deleteTodo} onEditTask={editTodo}/>
+                ) : (
+                  <TodoList todoList={todoList} onDeleteTask={deleteTodo} onEditTask={editTodo}/>
+                )
+              }
               </>
             )
           }
