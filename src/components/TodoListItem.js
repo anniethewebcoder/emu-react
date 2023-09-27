@@ -27,10 +27,10 @@ const TodoListItem = ({ todo, onDeleteTask, onEditTask }) => {
     }
 
     return (
-        <div className={styles.card}>
-            <h3 className={getStat(todo)}>{statIcon(todo)}&nbsp;{todo.task}</h3>
-            <h4>Due By: {todo.date}</h4>
-            <h4>Status: {todo.stat}</h4>
+        <div className={getStat(todo)}>
+            <h3 className={styles.card__task}>{statIcon(todo)}&nbsp;{todo.task}</h3>
+            <h4 className={styles.card__date}>Due By: {todo.date}</h4>
+            <h4 className={styles.card__stat}>Status: {todo.stat}</h4>
             <h4>Created: {todo.created.substring(0,10)}</h4>
             <p>
                 <button className={styles.card__button} type="button" onClick={editTask}><FontAwesomeIcon icon={faPenToSquare} size="2xl" /></button>

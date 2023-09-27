@@ -98,6 +98,9 @@
     width: 100%;
 }
 
+.buttons__row {
+    display: inline-block;
+}
 .addtask {
     margin: 1em 0;
 

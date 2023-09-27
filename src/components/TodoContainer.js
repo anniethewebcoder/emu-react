@@ -211,13 +211,14 @@ const TodoContainer = ({ tableName }) => {
               <p>Loading...</p>
             ) : (
               <>
-              <button onClick={toggleTaskSort} className={styles.button}>{sortTaskButton}</button>
-              <button onClick={toggleDateSort} className={styles.button}>{sortDateButton}</button>
-              <button onClick={showAll} className={styles.button}>Show All <FontAwesomeIcon icon={faListUl} size="2xl" /></button>
-              <button onClick={filterTodoStat} className={styles.button}>Filter Todo <FontAwesomeIcon icon={faCircle} size="2xl" /></button>
-              <button onClick={filterProgStat} className={styles.button}>Filter In progress <FontAwesomeIcon icon={faSpinner} size="2xl" /></button>
-              <button onClick={filterDoneStat} className={styles.button}>Filter Done <FontAwesomeIcon icon={faCircleCheck} size="2xl" /></button>
-              
+              <div className={styles.buttons__row}>
+                <button onClick={toggleTaskSort} className={styles.button}>{sortTaskButton}</button>
+                <button onClick={toggleDateSort} className={styles.button}>{sortDateButton}</button>
+                <button onClick={showAll} className={styles.button}>Show All <FontAwesomeIcon icon={faListUl} size="2xl" /></button>
+                <button onClick={filterTodoStat} className={styles.button}>Filter Todo <FontAwesomeIcon icon={faCircle} size="2xl" /></button>
+                <button onClick={filterProgStat} className={styles.button}>Filter In progress <FontAwesomeIcon icon={faSpinner} size="2xl" /></button>
+                <button onClick={filterDoneStat} className={styles.button}>Filter Done <FontAwesomeIcon icon={faCircleCheck} size="2xl" /></button>
+              </div>
               { isFiltered ? (
                   <TodoList todoList={filteredList} onDeleteTask={deleteTodo} onEditTask={editTodo}/>
                 ) : (
