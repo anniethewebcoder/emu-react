@@ -78,6 +78,12 @@
     height: 80vh;
 }
 
+.section__about {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
 .notfound {
     max-width: 100%;
     height: auto;
