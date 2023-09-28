@@ -6,6 +6,9 @@
     --yellowColor: #dddb76;
     --orangeColor: #ef694d;
     --brownColor: #42403f;
+    --blackColor: #000000;
+    --greenColor: #889538;  
+    --purpleColor: #953888;
 }
 
 body {
@@ -22,4 +25,8 @@ body {
 .container {
     margin: 0 auto;
     width: 80%;  
+}
+
+a {
+    text-decoration: none;
 }

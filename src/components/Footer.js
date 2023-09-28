@@ -7,6 +7,8 @@ const Footer = () => {
         <div className={styles.footer}>
             <FontAwesomeIcon icon={faGithub} size="2xl" />
             <FontAwesomeIcon icon={faLinkedin} size="2xl" />
+
+            &copy; Annie Kwon, Code the Dream 2023
         </div>
     )
 }

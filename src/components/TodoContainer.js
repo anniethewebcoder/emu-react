@@ -129,12 +129,15 @@ const TodoContainer = ({ tableName }) => {
   const toggleDateSort = () => {
     setIsDateAscending(!isDateAscending)
 
+    let currentList
     let newList
+
+    isFiltered === false ? currentList = todoList : currentList = filteredList
 
     if(isDateAscending === true) {
       setSortDateButton(<FontAwesomeIcon icon={faArrowDown19} size="2xl" />)
 
-      newList = todoList.sort((a,b) => {
+      newList = currentList.sort((a,b) => {
         if(a.date > b.date) return -1
         if(a.date < b.date) return 1
         return 0
@@ -142,14 +145,14 @@ const TodoContainer = ({ tableName }) => {
     } else {
       setSortDateButton(<FontAwesomeIcon icon={faArrowDown91} size="2xl" />)
 
-      newList = todoList.sort((a,b) => {
+      newList = currentList.sort((a,b) => {
         if(a.date > b.date) return 1
         if(a.date < b.date) return -1
         return 0
       })
     }
 
-    setTodoList([...newList])
+    isFiltered === false ? setTodoList([...newList]) : setFilteredList([...newList])
   }
 
   const showAll = () => {

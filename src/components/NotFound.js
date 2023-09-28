@@ -1,4 +1,5 @@
 import styles from './../css/app.module.css'
+import { Link } from 'react-router-dom'
 
 const NotFound = () => {
 
@@ -8,8 +9,10 @@ const NotFound = () => {
                 404 - Page Not Found
             </div>
             <div className={styles.section__body_img}>
-                But please enjoy this cute happy dog.
-                {/* <img className="notfound" alt="notfound" src={notfoundimg} /> */}
+                <p>
+                    But, please enjoy this cute happy dog and you can go back <Link to="/">here.</Link>
+                </p>
+                
             </div>
         </div>
     )
